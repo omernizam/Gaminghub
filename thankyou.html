@@ -1,23 +1,48 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" >
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thank You - City Games</title>
-  <link rel="stylesheet" href="thankyou.css" >
+  <title>Thank You | Gaming Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="thankyou.css">
 </head>
 <body>
-  <div class="thankyou-container">
-    <h1>Thank You!</h1>
-    <p id="thankMessage">Loading your delivery info...</p>
-  </div>
+  <header>
+    <div class="logo">Gaming Hub</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shops.html">Shop</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <script src="thankyou.js">
-    
-  </script>
-<footer>
+  <main>
+    <div class="thank-you-container">
+      <h1>Thank You!</h1>
+      <p>Your order has been placed successfully.</p>
+      <p id="delivery-date">Estimated delivery date will be shown here.</p>
+      <a href="shops.html">Back to Home</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-logo">Gaming Hub</div>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a>
+    </div>
     <p>&copy; 2025 Gaming Hub. All Rights Reserved.</p>
   </footer>
+
+  <script>
+    const deliveryDate = localStorage.getItem("deliveryDate");
+    if (deliveryDate) {
+      document.getElementById("delivery-date").textContent = `Estimated Delivery Date: ${deliveryDate}`;
+      localStorage.removeItem("deliveryDate");
+    } else {
+      document.getElementById("delivery-date").textContent = "Delivery date information is unavailable.";
+    }
+  </script>
 </body>
 </html>
