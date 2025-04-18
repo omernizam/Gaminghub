@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | Gaming Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shop.css">
+  <style>
+    .checkout-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #1e1e1e;
+      border: 2px solid #ff6f61;
+      border-radius: 10px;
+    }
+
+    .checkout-container h2 {
+      color: #ff6f61;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .checkout-container label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+
+    .checkout-container input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #888;
+      border-radius: 5px;
+      font-family: 'Audiowide', sans-serif;
+    }
+
+    .checkout-container button {
+      background-color: #ff6f61;
+      color: #121212;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 5px;
+      font-size: 1rem;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    .checkout-container button:hover {
+      background-color: #f05b4f;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      color: #f5f5f5;
+    }
+
+    table th, table td {
+      border: 1px solid #ff6f61;
+      padding: 10px;
+      text-align: center;
+    }
+
+    table th {
+      background-color: #121212;
+      color: #ff6f61;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Gaming Hub</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="checkout-container">
+      <h2>Checkout</h2>
+      <form id="checkout-form">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required>
+
+        <label for="address">Shipping Address</label>
+        <input type="text" id="address" required>
+
+        <label for="card">Credit Card Number</label>
+        <input type="text" id="card" required maxlength="16">
+
+        <h3 style="text-align:center; color:#ff6f61; margin-top:30px;">Your Order</h3>
+        <table id="order-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3" style="text-align:right;"><strong>Grand Total:</strong></td>
+              <td id="order-total">$0.00</td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <button type="submit">Pay Now</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">Gaming Hub</div>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a>
+    </div>
+    <p>&copy; 2025 Gaming Hub. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function populateOrderTable() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const tbody = document.querySelector("#order-table tbody");
+      const totalElement = document.getElementById("order-total");
+      let grandTotal = 0;
+
+      tbody.innerHTML = "";
+      cart.forEach(item => {
+        const row = document.createElement("tr");
+        const itemTotal = item.price * item.quantity;
+        grandTotal += itemTotal;
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td>$${item.price.toFixed(2)}</td>
+          <td>${item.quantity}</td>
+          <td>$${itemTotal.toFixed(2)}</td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      totalElement.textContent = `$${grandTotal.toFixed(2)}`;
+    }
+
+    document.addEventListener("DOMContentLoaded", populateOrderTable);
+
+    document.getElementById("checkout-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const deliveryDate = new Date();
+      deliveryDate.setDate(deliveryDate.getDate() + 5);
+      const formattedDate = deliveryDate.toDateString();
+
+      localStorage.removeItem("cart");
+      localStorage.setItem("deliveryDate", formattedDate);
+
+      window.location.href = "thankyou.html";
+    });
+  </script>
+</body>
+</html>

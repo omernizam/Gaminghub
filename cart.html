@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart | Gaming Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cart.css">
+  
+</head>
+<body>
+  <header>
+    <div class="logo">Gaming Hub</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="order.html">Order</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <button id="backbutton" class="backbutton">&#8629;</button>
+    
+    <section class="main-intro">
+      <h1>Your Shopping Cart</h1>
+      <p>Review the items you've added and proceed to checkout.</p>
+    </section>
+
+    <section class="cart-section">
+      <table id="cart-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Cart items will be inserted here -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3" style="text-align:right;"><strong>Grand Total:</strong></td>
+            <td id="grand-total">$0.00</td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <div style="text-align:center; margin-top:30px;">
+        <button id="save-fav" class="checkout-btn">Add to Favourites</button>
+        <button id="load-fav" class="checkout-btn">Apply Favourites</button>
+        <button id="clear-cart" class="checkout-btn">Clear Cart</button>
+      </div>
+
+      <div style="text-align:center; margin-top:30px;">
+        <a href="checkout.html" class="checkout-btn">Proceed to Checkout</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">Gaming Hub</div>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a>
+    </div>
+    <p>&copy; 2025 Gaming Hub. All Rights Reserved.</p>
+  </footer>
+
+  <script src="cart.js">
+   
+  </script>
+</body>
+</html>
