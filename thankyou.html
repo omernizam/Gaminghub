@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thank You - City Games</title>
-  <link rel="stylesheet" href="thankyou.css" />
+  <link rel="stylesheet" href="thankyou.css" >
 </head>
 <body>
   <div class="thankyou-container">
@@ -13,21 +13,10 @@
     <p id="thankMessage">Loading your delivery info...</p>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const name = localStorage.getItem("username");
-      const date = localStorage.getItem("deliveryDate");
-
-      if (name && date) {
-        document.getElementById("thankMessage").textContent =
-  `Thank you, ${name}! Your order will arrive by ${date}.`;
-      } else {
-        document.getElementById("thankMessage").textContent =
-          "Thank you for your order!";
-      }
-    });
+  <script src="thankyou.js">
+    
   </script>
-
+<footer>
     <p>&copy; 2025 Gaming Hub. All Rights Reserved.</p>
   </footer>
 </body>
